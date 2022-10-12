@@ -1,0 +1,27 @@
+scalar AWSTimestamp
+
+type Todo {
+  id: ID!
+  title: String!
+  completed: Boolean!
+  createdAt: AWSTimestamp!
+}
+
+input AddTodoInput {
+  title: String!
+}
+
+input ToggleTodoInput {
+  id: ID!
+  completed: Boolean!
+}
+
+type Query {
+  getTodos: [Todo!]!
+}
+
+type Mutation {
+  addTodo(addTodoInput: AddTodoInput!): Todo
+  toggleTodo(toggleTodoInput: ToggleTodoInput!): Todo
+  deleteTodo(id: ID!): Boolean
+}
